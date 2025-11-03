@@ -1,18 +1,24 @@
-name: CI
+name: CCWC Rust CI
 
 on:
   push:
+    paths:
+      - 'ccwc-rust/**'
     branches: [ main ]
   pull_request:
-    branches: [ "**" ]
+    paths:
+      - 'ccwc-rust/**'
 
 permissions:
   contents: read
 
 jobs:
-  test:
-    name: Build and Test
+  rust-test:
+    name: Build and test ccwc-rust
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ccwc-rust
 
     steps:
       - name: Checkout repository

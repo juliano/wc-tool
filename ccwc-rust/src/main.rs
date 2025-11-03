@@ -44,7 +44,7 @@ fn process<R: Read>(r: &mut R, opts: Option<&String>) -> String {
             "-w" => counts.words,
             "-m" => counts.chars,
             _ => {
-                eprintln!("EITA! Usage: ccwc <option> <file>");
+                eprintln!("Usage: ccwc <option> <file>");
                 std::process::exit(1);
             }
         };
