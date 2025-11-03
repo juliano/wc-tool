@@ -12,17 +12,12 @@ fn ccwc_file(opt: &str) -> Vec<String> {
     let output = command.output().expect("Failed to execute ccwc");
 
     let stdout = String::from_utf8_lossy(&output.stdout).to_string();
-    return stdout
-        .trim()
-        .split_whitespace()
-        .map(|s| s.to_string())
-        .collect();
+    stdout.split_whitespace().map(|s| s.to_string()).collect()
 }
 
 fn ccwc_stdin(opt: &str) -> Vec<String> {
     let path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("tests/test.txt");
     let file: File = File::open(&path).expect("Failed to open test file");
-
     let mut command = Command::new(env!("CARGO_BIN_EXE_ccwc"));
     if !opt.is_empty() {
         command.arg(opt);
@@ -34,11 +29,7 @@ fn ccwc_stdin(opt: &str) -> Vec<String> {
         .expect("Failed to execute ccwc");
 
     let stdout = String::from_utf8_lossy(&output.stdout).to_string();
-    return stdout
-        .trim()
-        .split_whitespace()
-        .map(|s| s.to_string())
-        .collect();
+    stdout.split_whitespace().map(|s| s.to_string()).collect()
 }
 
 #[test]

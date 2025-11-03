@@ -23,7 +23,7 @@ fn main() {
     match opt_path {
         Some(path) => {
             let mut file = File::open(path)
-                .expect(&format!("ccwc: {}: open: No such file or directory", path));
+                .unwrap_or_else(|_| panic!("ccwc: {}: open: No such file or directory", path));
             let result = process(&mut file, opts);
             println!(" {:>7} {}", result, path)
         }
