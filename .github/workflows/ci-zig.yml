@@ -1,0 +1,34 @@
+name: CCWC Zig CI
+
+on:
+  push:
+    paths:
+      - 'ccwc-zig/**'
+    branches: [ main ]
+  pull_request:
+    paths:
+      - 'ccwc-zig/**'
+
+jobs:
+  zig-test:
+    name: Build and test ccwc-zig
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ccwc-zig
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Zig
+      uses: goto-bus-stop/setup-zig@v2
+      with:
+        version: '0.15.1'
+
+    - name: Check formatting
+      run: zig fmt --check src/
+
+    - name: Run tests
+      run: zig build test --summary all
+

@@ -1,0 +1,23 @@
+# Zig build artifacts
+zig-cache/
+zig-out/
+
+# Build output
+/main
+
+# Test temporary files
+ccwc_test_*.tmp
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Backup files
+*.bak
